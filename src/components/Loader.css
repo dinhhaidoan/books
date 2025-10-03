@@ -1,0 +1,380 @@
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.loader-fullscreen {
+  min-height: 200px;
+}
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+}
+
+[data-theme="dark"] .loader-overlay {
+  background-color: rgba(13, 17, 23, 0.8);
+}
+
+.loader-small {
+  min-height: 40px;
+}
+
+.loader-medium {
+  min-height: 60px;
+}
+
+.loader-large {
+  min-height: 100px;
+}
+
+.loader-message {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-align: center;
+  font-weight: 500;
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-small .spinner {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.loader-large .spinner {
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dots-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dots {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: dotPulse 1.4s ease-in-out infinite both;
+}
+
+.loader-small .dot {
+  width: 8px;
+  height: 8px;
+}
+
+.loader-large .dot {
+  width: 16px;
+  height: 16px;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+.dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes dotPulse {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pulse-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pulse {
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.loader-small .pulse {
+  width: 24px;
+  height: 24px;
+}
+
+.loader-large .pulse {
+  width: 60px;
+  height: 60px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.bars-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bars {
+  display: flex;
+  gap: 4px;
+  align-items: end;
+}
+
+.bar {
+  width: 4px;
+  height: 20px;
+  background-color: var(--accent-primary);
+  border-radius: 2px;
+  animation: barPulse 1.2s ease-in-out infinite;
+}
+
+.loader-small .bar {
+  width: 3px;
+  height: 16px;
+}
+
+.loader-large .bar {
+  width: 6px;
+  height: 32px;
+}
+
+.bar:nth-child(1) { animation-delay: 0s; }
+.bar:nth-child(2) { animation-delay: 0.1s; }
+.bar:nth-child(3) { animation-delay: 0.2s; }
+.bar:nth-child(4) { animation-delay: 0.3s; }
+.bar:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes barPulse {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+}
+
+.book-card-skeleton {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card-skeleton-grid .skeleton-cover {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--border-color) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.book-card-skeleton-grid .skeleton-content {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.book-card-skeleton-list {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.book-card-skeleton-list .skeleton-cover {
+  width: 120px;
+  min-width: 120px;
+  aspect-ratio: 3/4;
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--border-color) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.book-card-skeleton-list .skeleton-content {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.skeleton-line {
+  height: 16px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--border-color) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+  animation: shimmer 2s infinite;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 80%;
+}
+
+.skeleton-author {
+  height: 16px;
+  width: 60%;
+}
+
+.skeleton-rating {
+  height: 14px;
+  width: 40%;
+}
+
+.skeleton-description {
+  height: 14px;
+  width: 100%;
+}
+
+.skeleton-description.short {
+  width: 70%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.loading-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.loading-grid-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.loading-grid-list {
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .loading-grid-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .book-card-skeleton-list .skeleton-cover {
+    width: 100px;
+    min-width: 100px;
+  }
+  
+  .book-card-skeleton-list .skeleton-content {
+    padding: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-grid-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .book-card-skeleton-list {
+    flex-direction: column;
+  }
+  
+  .book-card-skeleton-list .skeleton-cover {
+    width: 100%;
+    aspect-ratio: 2/1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .dot,
+  .pulse,
+  .bar,
+  .skeleton-line,
+  .skeleton-cover {
+    animation: none;
+  }
+  
+  .skeleton-line,
+  .skeleton-cover {
+    background: var(--bg-tertiary);
+  }
+}
+
+@media (prefers-contrast: high) {
+  .spinner {
+    border-width: 4px;
+  }
+  
+  .skeleton-line,
+  .skeleton-cover {
+    border: 1px solid var(--border-color);
+  }
+}
